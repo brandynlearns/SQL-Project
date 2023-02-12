@@ -1,0 +1,69 @@
+SQL PROJECT
+
+Create a database schema to store the following information:	
+1 = *table* Product information (such as name, description, price, and quantity in stock)
+#  A column must be defined as NOT NULL if it is a primary key
+CREATE TABLE Product_Info 
+(
+    id INT PRIMARY KEY NOT NULL,
+    names VARCHAR (30),
+    descriptions VARCHAR (30),
+    price FLOAT,
+    quantity_in_stock INT
+);
+
+
+2 = Customer information (such as name, email, and shipping address)	
+#  A column must be defined as NOT NULL if it is a primary key
+CREATE TABLE Customer_information 
+(
+    id INT PRIMARY KEY NOT NULL,
+    Cust_Name VARCHAR (30),
+    email VARCHAR (30),
+    shipping_address VARCHAR
+ );
+
+
+3 = Order information (such as the products ordered, the quantity of each product, and the total cost of the order)	
+#  A column must be defined as NOT NULL if it is a primary key
+CREATE TABLE Order_Info 
+(
+    id INT PRIMARY KEY NOT NULL,
+    products_ordered VARCHAR (30),
+    quantity_of_product INT,
+    total_cost_ofd_order FLOAT
+);
+
+
+Write SQL queries to perform the following tasks:	
+1 = Add a new product to the database
+# cowboots are the new product
+INSERT INTO Product_Info (id, names, descriptions, price, quantity_in_stock)
+VALUES
+(10, ‘cowboots’, ‘animal_clothes’, 30.21, 100);	
+
+
+2 = Update the quantity of a product in stock	
+UPDATE Product_Info
+SET quantity_in_stock = 100
+WHERE id = 7;
+
+
+3 = Retrieve a list of all products in stock
+# names is the “products” / you can go straight into a column/list 
+SELECT names
+FROM Product_Info;	
+
+
+4 = Retrieve a list of all orders for a specific customer
+### practice this one###
+SELECT quantity_of_product	
+FROM Order_Info	
+WHERE id = 2;	
+
+
+5 = Calculate the total sales for a given time period (e.g. the past month)
+### practice this one###
+SELECT SUM (total_cost_ofd_order)
+FROM Order_Info
+WHERE id IN (1, 2);
